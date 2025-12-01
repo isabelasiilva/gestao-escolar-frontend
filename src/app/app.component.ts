@@ -19,11 +19,13 @@ export class AppComponent {
     this.items = [
       {
         label: 'Home',
-        icon: 'pi pi-home'
+        icon: 'pi pi-home',
+        routerLink: '/'
       },
       {
-        label: 'Features',
-        icon: 'pi pi-star'
+        label: 'Cadastro de Alunos',
+        icon: 'pi pi-star',
+        routerLink: '/cadastro-alunos'
       },
       {
         label: 'Projects',

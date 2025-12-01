@@ -1,4 +1,13 @@
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex.css";
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap');
 
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: "TikTok Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "wdth" 100;
+}
