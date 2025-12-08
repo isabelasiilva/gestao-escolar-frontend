@@ -1,5 +1,6 @@
-<form>
-    <fieldset formGroupName="dadosPessoais" class="border-0">
+<form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+
+    <fieldset class="border-0">
         <legend>Dados Pessoais</legend>
         <div class="formgrid grid">
             <div class="field col-6">
@@ -20,7 +21,7 @@
         </div>
     </fieldset>
 
-    <fieldset formGroupName="endereco" class="border-0">
+    <fieldset class="border-0">
         <legend>Endereço</legend>
         <div class="formgrid grid">
             <div class="field col-10">
@@ -47,5 +48,6 @@
 
     </fieldset>
 
-    <button type="submit">Cadastrar</button>
+    <p-button label="Cadastrar" type="submit" class="flex justify-content-center" />
+    <!-- <button type="submit">Cadastrar</button> -->
 </form>

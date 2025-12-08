@@ -1,0 +1,82 @@
+<div class="card">
+    <p-table [columns]="cols" [value]="alunos" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{ col.header }}
+                </th>
+                <th style="min-width: 12rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{ rowData[col.field] }}
+                </td>
+                <td>
+                    <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
+                        (click)="editarAluno(rowData.alunoId)" />
+                    <p-button icon="pi pi-trash" severity="danger" [rounded]="true" [outlined]="true"
+                        (click)="deletarAluno(rowData)" />
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <!-- Modal de edição -->
+    <p-dialog [(visible)]="visibilidadeEdicao" [style]="{ width: '450px' }" header="Modal de edição" [modal]="true">
+        <form [formGroup]="edicaoForm" (ngSubmit)="salvarEdicao()">
+            <fieldset class="border-0">
+                <legend>Dados Pessoais</legend>
+                <div class="formgrid grid">
+                    <div class="field col-12">
+                        <label for="nome">Nome:</label>
+                        <input id="nome" type="text" formControlName="nome"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                    <div class="field col-12">
+                        <label for="cpf">CPF:</label>
+                        <input id="cpf" type="text" formControlName="cpf" placeholder="000.000.000-00"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                    <div class="field col-12">
+                        <label for="dataNascimento">Data de Nascimento:</label>
+                        <input id="dataNascimento" type="date" formControlName="dataNascimento"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="border-0">
+                <legend>Endereço</legend>
+                <div class="formgrid grid">
+                    <div class="field col-12">
+                        <label for="rua">Rua:</label>
+                        <input id="rua" type="text" formControlName="rua"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                    <div class="field col-6">
+                        <label for="numero">Número:</label>
+                        <input id="numero" type="text" formControlName="numero"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                    <div class="field col-6">
+                        <label for="estado">Estado:</label>
+                        <input id="estado" type="text" formControlName="estado"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                    <div class="field col-12">
+                        <label for="cidade">Cidade:</label>
+                        <input id="cidade" type="text" formControlName="cidade"
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="flex justify-content-center gap-2 pt-3">
+                <p-button label="Cancel" severity="secondary" (click)="visibilidadeEdicao = false" />
+                <p-button label="Save" (click)="salvarEdicao()" />
+            </div>
+        </form>
+    </p-dialog>
+</div>
