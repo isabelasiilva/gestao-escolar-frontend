@@ -11,7 +11,12 @@
         <ng-template #body let-rowData let-columns="columns">
             <tr>
                 <td *ngFor="let col of columns">
-                    {{ rowData[col.field] }}
+                    <ng-container *ngIf="col.type === 'date'; else default">
+                        {{ rowData[col.field] | date: 'dd-MM-yyyy' }}
+                    </ng-container>
+                    <ng-template #default>
+                        {{ rowData[col.field] }}
+                    </ng-template>
                 </td>
                 <td>
                     <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"

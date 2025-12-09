@@ -30,7 +30,7 @@ export class AlunosCadastradosComponent implements OnInit {
     { field: 'alunoId', header: 'ID' },
     { field: 'nome', header: 'Nome' },
     { field: 'cpf', header: 'CPF' },
-    { field: 'dataNascimento', header: 'Nascimento' },
+    { field: 'dataNascimento', header: 'Nascimento', type: 'date' },
     { field: 'rua', header: 'Rua' },
     { field: 'numero', header: 'Número' },
     { field: 'estado', header: 'Estado' },

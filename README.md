@@ -12,6 +12,9 @@ Sistema de gerenciamento escolar desenvolvido para facilitar o cadastro e contro
 ## Funcionalidades
 
 *   **Cadastro de Alunos**: Formulário com validação para inserir novos alunos.
+<img width="1091" height="767" alt="cadastro-alunos" src="https://github.com/user-attachments/assets/3d0d0ef2-1713-43db-bdcd-719a78fb4ddb" />
+
+  
 *   **Listagem de Alunos**: Visualização em tabela dos alunos cadastrados.
 *   **Edição**: Atualização dos dados cadastrais.
 *   **Exclusão**: Remoção de registros de alunos.
