@@ -27,4 +27,8 @@ export class AlunoService {
     EditarAluno(aluno: Aluno): Observable<Aluno> {
         return this.http.put<Aluno>(`${this.apiUrl}/${aluno.alunoId}`, aluno);
     }
+
+    DeletarAluno(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    }
 }

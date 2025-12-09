@@ -1,3 +1,7 @@
+<div class="card text-center">
+    <h2>Cadastro de aluno</h2>
+    <p class="text-red-700">Todos os campos são de preenchimento obrigatório*</p>
+</div>
 <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
 
     <fieldset class="border-0">
@@ -11,7 +15,8 @@
             <div class="field col-6">
                 <label for="cpf">CPF:</label>
                 <input id="cpf" type="text" formControlName="cpf" placeholder="000.000.000-00"
-                    class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                    class="p-2 border-1 border-solid border-300 border-round outline-none w-full"
+                    mask="000.000.000-00" />
             </div>
             <div class="field col-4">
                 <label for="dataNascimento">Data de Nascimento:</label>
@@ -51,3 +56,7 @@
     <p-button label="Cadastrar" type="submit" class="flex justify-content-center" />
     <!-- <button type="submit">Cadastrar</button> -->
 </form>
+
+<p-dialog [header]="dialogHeader" [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50vw' }">
+    <p>{{ dialogMessage }}</p>
+</p-dialog>

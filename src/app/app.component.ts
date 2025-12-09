@@ -24,7 +24,7 @@ export class AppComponent {
       },
       {
         label: 'Cadastro de Alunos',
-        icon: 'pi pi-star',
+        icon: 'pi pi-user',
         routerLink: '/cadastro-alunos'
       },
       {
@@ -33,7 +33,7 @@ export class AppComponent {
         items: [
           {
             label: 'Alunos cadastrados',
-            icon: 'pi pi-bolt',
+            icon: 'pi pi-server',
             routerLink: '/alunos-cadastrados'
           }
         ]

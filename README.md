@@ -1,27 +1,54 @@
-# GestaoEscolar
+# Gestão Escolar Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Sistema de gerenciamento escolar desenvolvido para facilitar o cadastro e controle de alunos. Este projeto compõe o frontend da aplicação, consumindo uma API REST.
 
-## Development server
+## Tecnologias Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+*   **[Angular 18](https://angular.dev/)**: Framework principal para construção da interface.
+*   **[PrimeNG 18](https://primeng.org/)**: Biblioteca de componentes de UI rica e responsiva.
+*   **[PrimeFlex 4](https://primeflex.org/)**: Utilitário CSS para layout e estilização ágil.
+*   **RxJS**: Biblioteca para programação reativa.
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+*   **Cadastro de Alunos**: Formulário com validação para inserir novos alunos.
+*   **Listagem de Alunos**: Visualização em tabela dos alunos cadastrados.
+*   **Edição**: Atualização dos dados cadastrais.
+*   **Exclusão**: Remoção de registros de alunos.
+*   **Integração API**: Comunicação completa (CRUD) com o backend.
 
-## Build
+## Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Antes de rodar o projeto, certifique-se de ter instalado:
 
-## Running unit tests
+*   [Node.js](https://nodejs.org/) (versão LTS recomendada).
+*   API Backend rodando localmente na porta `https://localhost:7060`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Como Rodar o Projeto
 
-## Running end-to-end tests
+1.  **Instale as dependências**:
+    ```bash
+    npm install
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2.  **Inicie o servidor de desenvolvimento**:
+    ```bash
+    ng serve
+    ```
+    Ou, para abrir automaticamente no navegador:
+    ```bash
+    ng serve -o
+    ```
 
-## Further help
+3.  **Acesse a aplicação**:
+    Navegue para `http://localhost:4200/`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Estrutura do Projeto
+
+*   `src/app/cadastro-alunos`: Componente responsável pelo formulário de cadastro.
+*   `src/app/alunos-cadastrados`: Componente responsável pela listagem e ações de edição/exclusão.
+*   `src/app/services`: Serviços para comunicação HTTP com a API.
+*   `src/app/models`: Modelos de dados TypeScript (Interfaces/Classes).
+
+---
+Desenvolvido como projeto de estudo prático.

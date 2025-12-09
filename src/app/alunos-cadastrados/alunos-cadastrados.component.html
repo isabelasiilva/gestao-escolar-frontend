@@ -17,14 +17,15 @@
                     <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                         (click)="editarAluno(rowData.alunoId)" />
                     <p-button icon="pi pi-trash" severity="danger" [rounded]="true" [outlined]="true"
-                        (click)="deletarAluno(rowData)" />
+                        (click)="deletarAluno(rowData.alunoId)" />
                 </td>
             </tr>
         </ng-template>
     </p-table>
 
     <!-- Modal de edição -->
-    <p-dialog [(visible)]="visibilidadeEdicao" [style]="{ width: '450px' }" header="Modal de edição" [modal]="true">
+    <p-dialog [(visible)]="visibilidadeEdicao" [style]="{ width: '450px' }" header="Editar dados de aluno"
+        [modal]="true">
         <form [formGroup]="edicaoForm" (ngSubmit)="salvarEdicao()">
             <fieldset class="border-0">
                 <legend>Dados Pessoais</legend>
@@ -37,7 +38,8 @@
                     <div class="field col-12">
                         <label for="cpf">CPF:</label>
                         <input id="cpf" type="text" formControlName="cpf" placeholder="000.000.000-00"
-                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full" />
+                            class="p-2 border-1 border-solid border-300 border-round outline-none w-full"
+                            mask="000.000.000-00" />
                     </div>
                     <div class="field col-12">
                         <label for="dataNascimento">Data de Nascimento:</label>
@@ -80,3 +82,7 @@
         </form>
     </p-dialog>
 </div>
+
+<p-dialog [header]="dialogHeader" [(visible)]="displayDialog" [modal]="true" [style]="{ width: '450px' }">
+    <p>{{ dialogMessage }}</p>
+</p-dialog>

@@ -7,11 +7,12 @@ import { ButtonModule } from 'primeng/button';
 
 import { Dialog } from 'primeng/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-alunos-cadastrados',
   standalone: true,
-  imports: [TableModule, CommonModule, ButtonModule, Dialog, ReactiveFormsModule],
+  imports: [TableModule, CommonModule, ButtonModule, Dialog, ReactiveFormsModule, NgxMaskDirective],
   templateUrl: './alunos-cadastrados.component.html',
   styleUrl: './alunos-cadastrados.component.css'
 })
@@ -21,6 +22,9 @@ export class AlunosCadastradosComponent implements OnInit {
   edicaoForm!: FormGroup;
   alunoIdSelecionado: number = 0;
   visibilidadeEdicao: boolean = false;
+  displayDialog: boolean = false;
+  dialogHeader: string = '';
+  dialogMessage: string = '';
 
   cols = [
     { field: 'alunoId', header: 'ID' },
@@ -59,7 +63,9 @@ export class AlunosCadastradosComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao carregar alunos', err);
-        alert('Erro ao carregar lista de alunos');
+        this.dialogHeader = 'Erro';
+        this.dialogMessage = 'Erro ao carregar lista de alunos';
+        this.displayDialog = true;
       }
     });
   }
@@ -83,7 +89,9 @@ export class AlunosCadastradosComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar aluno', err);
-        alert('Erro ao carregar dados do aluno');
+        this.dialogHeader = 'Erro';
+        this.dialogMessage = 'Erro ao carregar dados do aluno';
+        this.displayDialog = true;
       }
     });
   }
@@ -97,23 +105,42 @@ export class AlunosCadastradosComponent implements OnInit {
 
       this.alunoService.EditarAluno(alunoEditado).subscribe({
         next: () => {
-          alert('Aluno editado com sucesso!');
+          this.dialogHeader = 'Sucesso';
+          this.dialogMessage = 'Aluno editado com sucesso!';
+          this.displayDialog = true;
           this.visibilidadeEdicao = false;
           this.listaAlunos(); // Recarrega a lista
         },
         error: (err) => {
           console.error('Erro ao editar aluno', err);
-          alert('Erro ao editar aluno');
+          this.dialogHeader = 'Erro';
+          this.dialogMessage = 'Erro ao editar aluno';
+          this.displayDialog = true;
         }
       });
     } else {
-      alert('Formulário inválido');
+      this.dialogHeader = 'Aviso';
+      this.dialogMessage = 'Preencha todos os campos corretamente para salvar a edição!';
+      this.displayDialog = true;
     }
   }
 
-  deletarAluno(aluno: Aluno) {
-    console.log('Deletar aluno:', aluno);
-    // Implementar a lógica de exclusão do aluno
+  deletarAluno(id: number) {
+    this.alunoIdSelecionado = id;
+    this.alunoService.DeletarAluno(id).subscribe({
+      next: () => {
+        this.dialogHeader = 'Sucesso';
+        this.dialogMessage = 'Aluno deletado com sucesso!';
+        this.displayDialog = true;
+        this.listaAlunos(); // Recarrega a lista
+      },
+      error: (err) => {
+        console.error('Erro ao deletar aluno', err);
+        this.dialogHeader = 'Erro';
+        this.dialogMessage = 'Erro ao deletar aluno';
+        this.displayDialog = true;
+      }
+    });
   }
 
 }
